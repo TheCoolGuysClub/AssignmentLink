@@ -11,6 +11,9 @@ require('dotenv').config();
 const teacher = require(`./models/teacher.js`);
 const student = require(`./models/student.js`);
 const grade = require(`./models/grade.js`);
+const mongoose = require(`./db/mongoose.js`);
+const authRoute = require(`./routes/authRoute.js`);
+
 
 const port = process.env.PORT || 3000;
 const app = express();
