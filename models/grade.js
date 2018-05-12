@@ -9,11 +9,11 @@ const gradeSchema = mongoose.Schema({
     minLength: 1,
   },
   score: {
-    type: number,
+    type: Number,
     required: true
   },
   assignmentWorth: {
-    type: number,
+    type: Number,
     required: true
   }
 })
