@@ -34,6 +34,7 @@ app.set(`view engine`,`hbs`);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(morgan(`dev`));
+  app.use(`/`,authRoute);
   app.use((req,res,next)=>{
     //the reason why we use res
     res.locals.successMessage = req.flash(`successMessage`);
@@ -42,9 +43,9 @@ app.set(`view engine`,`hbs`);
   })
 
 
-app.get(`/teacher`,(req,res)=>{
-  res.render(`teacher`)
-;})
+// app.get(`/teacher`,(req,res)=>{
+//   res.render(`teacher`)
+// ;})
 
 app.get(`/`,(req,res)=>{
   res.render(`index`);
