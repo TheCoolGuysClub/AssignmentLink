@@ -20,7 +20,9 @@ app.engine(`hbs`,exphbs({defaultLayout:`main`,
                          extname:      `.hbs`}))
 app.set(`view engine`,`hbs`);
 
-
+app.get(`/teacher`,(req,res)=>{
+  res.render(`teacher`)
+;})
 
 app.get(`/`,(req,res)=>{
   res.render(`index`);
