@@ -14,7 +14,7 @@ const teacherSchema = mongoose.Schema({
     required: true,
     minLength: 6
   },
-  isStudent{
+  isStudent:{
     type:Boolean,
     required:true
   }
