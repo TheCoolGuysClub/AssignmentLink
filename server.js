@@ -9,7 +9,6 @@ require('dotenv').config();
 
 //locals variables
 const teacher = require(`./models/teacher.js`);
-const student = require(`./models/student.js`);
 const grade = require(`./models/grade.js`);
 const mongoose = require(`./db/mongoose.js`);
 const authRoute = require(`./routes/authRoute.js`);
