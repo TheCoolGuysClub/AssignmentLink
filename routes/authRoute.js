@@ -44,7 +44,7 @@ const teacherData = matchedData(req);
 const teacher = new Teacher(teacherData);
 teacher.save()
   .then(teacher=>{
-    req.flash(`successMessage`,{message:"sign up successful!"});   
+    req.flash(`successMessage`,{message:"sign up successful!"});
     res.redirect(`/teacher`);
   })
   .catch(e=>{
@@ -68,9 +68,11 @@ authRoute.post('/login', (req, res) => {
               req.session.userId = user._id;
               console.log('userID in session:', user._id);
               req.flash('sucessMessage', {message: "login succuessful"});
+              console.log(`login succuessful`);
               res.redirect('/index');
             } else {
               req.flash('errorMessages', {message: 'Invalid password'});
+              console.log(`invalid password`);
               res.redirect('/login');
             }
 
