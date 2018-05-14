@@ -7,12 +7,18 @@ const bcrypt = require(`bcryptjs`);
 const Teacher = require(`../models/teacher.js`);
 
 const Grade = require(`../models/grade.js`);
+authRoute.get(`/public`,(req,res)=>{
+  res.render('public');
+})
 
 authRoute.get(`/register`,(req,res)=>{
   res.render(`register`);
 })
 authRoute.get(`/teacher`,(req,res)=>{
   res.render(`teacher`);
+})
+authRoute.get(`/login`,(req,res)=>{
+  res.render(`login`);
 })
 authRoute.post(`/register`,[
   body(`username`).isLength({min: 2})
