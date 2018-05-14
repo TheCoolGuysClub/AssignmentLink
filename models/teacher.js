@@ -13,10 +13,6 @@ const teacherSchema = mongoose.Schema({
     type: String,
     required: true,
     minLength: 6
-  },
-  isStudent:{
-    type:Boolean,
-    required:true
   }
 })
 
@@ -28,7 +24,7 @@ teacherSchema.pre('save', function(next) {
         teacher.password = hashedPassword;
         next();
       }).catch(e => {
-        console.log(`User ${teacher} failed to hashPassword`, e);
+        console.log(`Teacher ${teacher} failed to hashPassword`, e);
         next();
       })
   }
