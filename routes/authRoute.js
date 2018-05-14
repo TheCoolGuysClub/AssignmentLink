@@ -46,7 +46,7 @@ teacher.save()
   .then(teacher=>{
     req.flash(`successMessage`,{message:"sign up successful!"});
 
-    res.redirect(`/teacher`);
+    res.redirect(`/public`);
   })
   .catch(e=>{
     if(e.code === 11000){
