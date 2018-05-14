@@ -56,7 +56,7 @@ teacher.save()
 })
 
 authRoute.post('/login', (req, res) => {
-  User.findOne({username: req.body.username})
+  Teacher.findOne({username: req.body.username})
     .then(user => {
       if(!user) {
         req.flash('errorMessages', {message: 'This username does not exist.'});
