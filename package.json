@@ -1,7 +1,6 @@
 {
   "name": "assignment_scores",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
@@ -22,5 +21,14 @@
     "morgan": "^1.9.0",
     "nodemon": "^1.17.4",
     "validator": "^9.4.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCoolGuysClub/AssignmentLink.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheCoolGuysClub/AssignmentLink/issues"
+  },
+  "homepage": "https://github.com/TheCoolGuysClub/AssignmentLink#readme",
+  "description": ""
 }

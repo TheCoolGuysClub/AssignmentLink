@@ -5,7 +5,6 @@ const {matchedData, sanitize} = require('express-validator/filter');
 const bcrypt = require(`bcryptjs`);
 //local
 const Teacher = require(`../models/teacher.js`);
-const Student = require(`../models/student.js`);
 const Grade = require(`../models/grade.js`);
 
 authRoute.get(`/register`,(req,res)=>{
@@ -14,9 +13,7 @@ authRoute.get(`/register`,(req,res)=>{
 authRoute.get(`/teacher`,(req,res)=>{
   res.render(`teacher`);
 })
-authRoute.get(`/student`,(req,res)=>{
-  res.render(`student`);
-})
+
 authRoute.post(`/register`,[
   body(`username`).isLength({min: 2})
     .withMessage(`UserName must be at least 2 characters`)
