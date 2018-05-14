@@ -21,6 +21,9 @@ authRoute.get(`/login`,(req,res)=>{
 authRoute.get(`/teacher`,(req,res)=>{
   res.render(`teacher`);
 })
+authRoute.get(`/login`,(req,res)=>{
+  res.render(`login`);
+})
 authRoute.post(`/register`,[
   body(`username`).isLength({min: 2})
     .withMessage(`Username must be at least 2 characters`)
