@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
-
+//
 const teacherSchema = mongoose.Schema({
   username: {
     type: String,
@@ -13,27 +13,24 @@ const teacherSchema = mongoose.Schema({
     type: String,
     required: true,
     minLength: 6
-  },
-  isStudent:{
-    type:Boolean,
-    required:true
   }
-})
 
-teacherSchema.pre('save', function(next) {
-  const teacher = this;
-  if(teacher.isModified('password')) {
-    bcrypt.hash(teacher.password, 10)
-      .then(hashedPassword => {
-        teacher.password = hashedPassword;
-        next();
-      }).catch(e => {
-        console.log(`User ${teacher} failed to hashPassword`, e);
-        next();
-      })
-  }
 })
-
+//
+// teacherSchema.pre('save', function(next) {
+//   const teacher = this;
+//   if(teacher.isModified('password')) {
+//     bcrypt.hash(teacher.password, 10)
+//       .then(hashedPassword => {
+//         teacher.password = hashedPassword;
+//         next();
+//       }).catch(e => {
+//         console.log(`User ${teacher} failed to hashPassword`, e);
+//         next();
+//       })
+//   }
+// })
+//
 const Teacher = mongoose.model('Teacher', teacherSchema);
-
+//
 module.exports = Teacher;
