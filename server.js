@@ -44,10 +44,6 @@ app.set(`view engine`,`hbs`);
   })
 
 
-// app.get(`/teacher`,(req,res)=>{
-//   res.render(`teacher`)
-// ;})
-
 app.get(`/`,(req,res)=>{
   res.render(`index`);
 })

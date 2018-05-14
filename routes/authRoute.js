@@ -7,16 +7,23 @@ const bcrypt = require(`bcryptjs`);
 const Teacher = require(`../models/teacher.js`);
 
 const Grade = require(`../models/grade.js`);
+authRoute.get(`/public`,(req,res)=>{
+  res.render('public');
+})
 
 authRoute.get(`/register`,(req,res)=>{
   res.render(`register`);
 })
+authRoute.get(`/login`,(req,res)=>{
+  res.render(`login`);
+})
+
 authRoute.get(`/teacher`,(req,res)=>{
   res.render(`teacher`);
 })
 authRoute.post(`/register`,[
   body(`username`).isLength({min: 2})
-    .withMessage(`UserName must be at least 2 characters`)
+    .withMessage(`Username must be at least 2 characters`)
   ,
   body('password').isLength({min:6})
   .withMessage(`Password must be at least 6 characters long`)
@@ -26,26 +33,59 @@ authRoute.post(`/register`,[
     const errorMessages = errors.array().map(obj=>{
     return{message:obj.msg};
     })
-    console.log(`errors`,errorMessages);
+    console.log(`errors`, errorMessages);
     req.flash(`errorMessages`,errorMessages)
     return res.redirect(`/register`);
   }
-      const teacherData = matchedData(req);
-      const teacher = new Teacher(teacherData);
-      teacher.save()
-        .then(teacher=>{
-          req.flash(`successMessage`,{message:"sign up successful!"})
-          res.redirect(`/teacher`);
-        })
-        .catch(e=>{
-          if(e.code ===11000){
-            req.flash(`errorMessages`,{message:"This username has already registereted"});
-          }
-          res.redirect(`/register`);
-        })
+const teacherData = matchedData(req);
+const teacher = new Teacher(teacherData);
+teacher.save()
+  .then(teacher=>{
+    req.flash(`successMessage`,{message:"sign up successful!"});   
+    res.redirect(`/teacher`);
+  })
+  .catch(e=>{
+    if(e.code === 11000){
+      req.flash(`errorMessages`,{message:"This username has already registered"});
+    }
+    res.redirect(`/register`);
+  })
+})
 
-  // console.log(errors);
+authRoute.post('/login', (req, res) => {
+  User.findOne({username: req.body.username})
+    .then(user => {
+      if(!user) {
+        req.flash('errorMessages', {message: 'This username does not exist.'});
+        res.redirect('/login');
+      } else {
+        bcrypt.compare(req.body.password, user.password)
+          .then(passwordIsValid => {
+            if (passwordIsValid) {
+              req.session.userId = user._id;
+              console.log('userID in session:', user._id);
+              req.flash('sucessMessage', {message: "login succuessful"});
+              res.redirect('/index');
+            } else {
+              req.flash('errorMessages', {message: 'Invalid password'});
+              res.redirect('/login');
+            }
 
+          })
+          .catch(e => {
+            console.log(e);
+          })
+      }
+    })
+    .catch(e => {
+      req.flash('errorMessages', {message: 'This username does not exist.'});
+      res.redirect('/login');
+    })
+})
+
+authRoute.post('/logout', (req, res) => {
+  req.session.userId = undefined;
+  res.redirect('/login');
 })
 
 
