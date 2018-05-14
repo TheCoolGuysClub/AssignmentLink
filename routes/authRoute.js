@@ -68,9 +68,11 @@ authRoute.post('/login', (req, res) => {
               req.session.userId = user._id;
               console.log('userID in session:', user._id);
               req.flash('sucessMessage', {message: "login succuessful"});
+              console.log(`login succuessful`);
               res.redirect('/index');
             } else {
               req.flash('errorMessages', {message: 'Invalid password'});
+              console.log(`invalid password`);
               res.redirect('/login');
             }
 
