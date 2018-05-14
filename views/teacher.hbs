@@ -5,11 +5,18 @@
     <title></title>
   </head>
   <body>
+    {{#each errorMessages}}
+    <p style= "color:red">{{message}}</p>
+
+    {{/each}}
+    {{#each successMessage}}
+    <p style= "color:lightgreen">{{message}}</p>
+    {{/each}}
     <form action="/register" method="post">
       <p>
-      username:<input type="text" name="username" placeholder="Type your UserName">
+      Assignment Name:<input type="text" name="username" placeholder="Type your UserName">
       password:<input type="password" name="password" placeholder="Type your Password">
-      
+
       </p>
       <p>
         <input type="submit">

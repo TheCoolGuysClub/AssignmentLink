@@ -45,6 +45,7 @@ const teacher = new Teacher(teacherData);
 teacher.save()
   .then(teacher=>{
     req.flash(`successMessage`,{message:"sign up successful!"});
+
     res.redirect(`/teacher`);
   })
   .catch(e=>{
