@@ -44,7 +44,7 @@ const teacherData = matchedData(req);
 const teacher = new Teacher(teacherData);
 teacher.save()
   .then(teacher=>{
-    req.flash(`successMessage`,{message:"sign up successful!"});   
+    req.flash(`successMessage`,{message:"sign up successful!"});
     res.redirect(`/teacher`);
   })
   .catch(e=>{
@@ -91,6 +91,6 @@ authRoute.post('/logout', (req, res) => {
   res.redirect('/login');
 })
 
-
+//testing
 
 module.exports = authRoute;
