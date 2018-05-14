@@ -12,7 +12,7 @@ authRoute.get(`/public`,(req,res)=>{
 })
 
 authRoute.get(`/register`,(req,res)=>{
-  res.render(`register`);
+  res.render(`teacher`);
 })
 authRoute.get(`/login`,(req,res)=>{
   res.render(`login`);

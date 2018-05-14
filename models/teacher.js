@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
-
+//
 const teacherSchema = mongoose.Schema({
   username: {
     type: String,
@@ -14,7 +14,6 @@ const teacherSchema = mongoose.Schema({
     required: true,
     minLength: 6
   }
-})
 
 teacherSchema.pre('save', function(next) {
   const teacher = this;
@@ -29,7 +28,6 @@ teacherSchema.pre('save', function(next) {
       })
   }
 })
-
 const Teacher = mongoose.model('Teacher', teacherSchema);
-
+//
 module.exports = Teacher;
