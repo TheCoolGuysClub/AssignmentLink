@@ -100,7 +100,7 @@ authRoute.post('/addGrade/:id', (req, res) => {
 
   const grade = new Grade({
     assignmentName: req.body.assignmentName,
-    studentName = req.body.studentName
+    studentName: req.body.studentName
   })
   grade.save()
     .then(grade => {
