@@ -11,8 +11,12 @@ authRoute.get(`/public`,(req,res)=>{
   res.render('public');
 })
 
+authRoute.get(`/index`,(req,res)=>{
+  res.render(`index`);
+})
+
 authRoute.get(`/register`,(req,res)=>{
-  res.render(`teacher`);
+  res.render(`register`);
 })
 authRoute.get(`/login`,(req,res)=>{
   res.render(`login`);
@@ -46,7 +50,7 @@ teacher.save()
   .then(teacher=>{
     req.flash(`successMessage`,{message:"sign up successful!"});
 
-    res.redirect(`/public`);
+    res.redirect(`/login`);
   })
   .catch(e=>{
     if(e.code === 11000){
@@ -58,19 +62,20 @@ teacher.save()
 
 authRoute.post('/login', (req, res) => {
   Teacher.findOne({username: req.body.username})
-    .then(user => {
-      if(!user) {
-        req.flash('errorMessages', {message: 'This username does not exist.'});
+    .then(teacher => {
+      if(!teacher) {
+        // req.flash('errorMessages', {message: 'This username does not exist.'});
+        console.log(req.body.username);
         res.redirect('/login');
       } else {
-        bcrypt.compare(req.body.password, user.password)
+        bcrypt.compare(req.body.password, teacher.password)
           .then(passwordIsValid => {
             if (passwordIsValid) {
-              req.session.userId = user._id;
-              console.log('userID in session:', user._id);
-              req.flash('sucessMessage', {message: "login succuessful"});
+              req.session.userId = teacher._id;
+              console.log('userID in session:', teacher._id);
+              // req.flash('sucessMessage', {message: "login succuessful"});
               console.log(`login succuessful`);
-              res.redirect('/index');
+              res.redirect('/teacher');
             } else {
               req.flash('errorMessages', {message: 'Invalid password'});
               console.log(`invalid password`);
@@ -89,7 +94,7 @@ authRoute.post('/login', (req, res) => {
     })
 })
 
-authRoute.post('/logout', (req, res) => {
+authRoute.get('/logout', (req, res) => {
   req.session.userId = undefined;
   res.redirect('/login');
 })

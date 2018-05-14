@@ -14,6 +14,7 @@ const teacherSchema = mongoose.Schema({
     required: true,
     minLength: 6
   }
+})
 
 teacherSchema.pre('save', function(next) {
   const teacher = this;
