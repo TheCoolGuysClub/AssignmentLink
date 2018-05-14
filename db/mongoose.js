@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const database = process.env.MONGODB_URI ||
-                 'mongodb://localhost:27017/assignemntlink';
+                 'mongodb://localhost:27017/assignmentlink';
 mongoose.connect(database)
   .then(() => {
     console.log(`Database up on ${database}`);
