@@ -93,6 +93,22 @@ authRoute.post('/logout', (req, res) => {
   res.redirect('/login');
 })
 
-//testing
+authRoute.post('/addGrade/:id', (req, res) => {
+  // let assignmentName = req.body.assignmentName;
+  // let studentName = req.body.studentName;
+
+  const grade = new Grade({
+    assignmentName: req.body.assignmentName,
+    studentName = req.body.studentName
+  })
+  grade.save()
+    .then(grade => {
+      res.redirect('/teacher')
+    })
+    .catch(e => {
+      res.status(400).send();
+    })
+})
+
 
 module.exports = authRoute;
