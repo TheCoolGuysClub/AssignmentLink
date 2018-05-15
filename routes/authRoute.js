@@ -75,6 +75,22 @@ authRoute.post('/score',[
     req.flash(`errorMessages`,errorMessages)
     return res.redirect(`/teacher`);
   }
+  const gradeData = matchedData(req);
+  const grade = new Grade(gradeData);
+  grade.save()
+    .then(grade=>{
+      req.flash(`successMessage`,{message:"sign up successful!"});
+      console.log("hi");
+      res.redirect(`/public`);
+    })
+    .catch(e=>{
+      if(e.code === 11000){
+        req.flash(`errorMessages`,{message:"This AssignmentName has already registered"});
+        console.log("hhi");
+      }
+      res.redirect(`/teacher`);
+
+    })
 })
 authRoute.post('/login', (req, res) => {
   Teacher.findOne({username: req.body.username})
