@@ -59,7 +59,23 @@ teacher.save()
     res.redirect(`/register`);
   })
 })
-
+authRoute.post('/score',[
+  body(`studentName`).isLength({min: 1})
+    .withMessage(`studentName must be at least 1 characters`)
+  ,
+  body('assignmentName').isLength({min:6})
+  .withMessage(`assignmentName must be at least 6 characters long`)
+],(req,res)=>{
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    const errorMessages = errors.array().map(obj=>{
+    return{message:obj.msg};
+    })
+    console.log(`errors`, errorMessages);
+    req.flash(`errorMessages`,errorMessages)
+    return res.redirect(`/teacher`);
+  }
+})
 authRoute.post('/login', (req, res) => {
   Teacher.findOne({username: req.body.username})
     .then(teacher => {
