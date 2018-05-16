@@ -48,8 +48,7 @@ const teacherData = matchedData(req);
 const teacher = new Teacher(teacherData);
 teacher.save()
   .then(teacher=>{
-    req.flash(`successMessage`,{message:"sign up successful!"});
-
+    req.flash(`successMessage`,{message:"sign up successful!"})
     res.redirect(`/login`);
   })
   .catch(e=>{
@@ -80,14 +79,13 @@ authRoute.post('/score',[
   const grade = new Grade(gradeData);
   grade.save()
     .then(grade=>{
-      req.flash(`successMessage`,{message:"sign up successful!"});
-      console.log("hi");
+      req.flash(`successMessage`,{message:"Successfully Create Assignment!"});
+      // console.log(message);
       res.redirect(`/public`);
     })
     .catch(e=>{
       if(e.code === 11000){
         req.flash(`errorMessages`,{message:"This AssignmentName has already registered"});
-        console.log(e);
       }
       res.redirect(`/teacher`);
 
@@ -97,7 +95,7 @@ authRoute.post('/login', (req, res) => {
   Teacher.findOne({username: req.body.username})
     .then(teacher => {
       if(!teacher) {
-        // req.flash('errorMessages', {message: 'This username does not exist.'});
+        req.flash('errorMessages', {message: 'This username does not exist.'});
         console.log(req.body.username);
         res.redirect('/login');
       } else {
@@ -106,7 +104,7 @@ authRoute.post('/login', (req, res) => {
             if (passwordIsValid) {
               req.session.userId = teacher._id;
               console.log('userID in session:', teacher._id);
-              // req.flash('sucessMessage', {message: "login succuessful"});
+              req.flash('sucessMessage', {message: "login succuessful"});
               console.log(`login succuessful`);
               res.redirect('/teacher');
             } else {
