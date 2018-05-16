@@ -52,8 +52,7 @@ const teacherData = matchedData(req);
 const teacher = new Teacher(teacherData);
 teacher.save()
   .then(teacher=>{
-    req.flash(`successMessage`,{message:"sign up successful!"});
-
+    req.flash(`successMessage`,{message:"sign up successful!"})
     res.redirect(`/login`);
   })
   .catch(e=>{
@@ -86,14 +85,13 @@ authRoute.post('/score',[
   const grade = new Grade(gradeData);
   grade.save()
     .then(grade=>{
-      req.flash(`successMessage`,{message:"sign up successful!"});
-      console.log("hi");
+      req.flash(`successMessage`,{message:"Successfully Create Assignment!"});
+      // console.log(message);
       res.redirect(`/public`);
     })
     .catch(e=>{
       if(e.code === 11000){
         req.flash(`errorMessages`,{message:"This AssignmentName has already registered"});
-        console.log(e);
       }
       res.redirect(`/teacher`);
 
