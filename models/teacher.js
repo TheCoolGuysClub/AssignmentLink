@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
-//
 const teacherSchema = mongoose.Schema({
   username: {
     type: String,

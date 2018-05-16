@@ -76,6 +76,7 @@ authRoute.post('/score',[
     return res.redirect(`/teacher`);
   }
   const gradeData = matchedData(req);
+  console.log(gradeData);
   const grade = new Grade(gradeData);
   grade.save()
     .then(grade=>{
@@ -86,7 +87,7 @@ authRoute.post('/score',[
     .catch(e=>{
       if(e.code === 11000){
         req.flash(`errorMessages`,{message:"This AssignmentName has already registered"});
-        console.log("hhi");
+        console.log(e);
       }
       res.redirect(`/teacher`);
 

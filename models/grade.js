@@ -3,18 +3,23 @@ const bcrypt = require('bcryptjs');
 const validator = require('validator');
 
 const gradeSchema = mongoose.Schema({
-  name: {
+  studentName: {
     type: String,
     required: true,
-    minLength: 1,
+    minLength: 1
+  },
+  assignmentName:{
+    type:String,
+    required:true,
+    minLength:6
   },
   score: {
     type: Number,
-    required: true
+    default: 100
   },
   assignmentWorth: {
     type: Number,
-    required: true
+    required: false
   }
 })
 
