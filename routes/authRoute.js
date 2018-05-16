@@ -10,8 +10,8 @@ const Grade = require(`../models/grade.js`);
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
     .then((grades) => {
-      res.send(grades);
-      res.render(`./public`,{grades});
+      console.log(grades);
+      res.render(`./public`, {grades});
   })
 })
 
@@ -58,7 +58,7 @@ teacher.save()
   })
   .catch(e=>{
     if(e.code === 11000){
-      req.flash(`errorMessages`,{message:"This username has already registered"});
+      req.flash(`errorMessages`,{message:"This username has already been registered"});
     }
     res.redirect(`/register`);
   })
@@ -101,7 +101,7 @@ authRoute.post('/login', (req, res) => {
   Teacher.findOne({username: req.body.username})
     .then(teacher => {
       if(!teacher) {
-        // req.flash('errorMessages', {message: 'This username does not exist.'});
+        req.flash('errorMessages', {message: 'This username does not exist.'});
         console.log(req.body.username);
         res.redirect('/login');
       } else {
@@ -110,7 +110,7 @@ authRoute.post('/login', (req, res) => {
             if (passwordIsValid) {
               req.session.userId = teacher._id;
               console.log('userID in session:', teacher._id);
-              // req.flash('sucessMessage', {message: "login succuessful"});
+              req.flash('sucessMessage', {message: "login succuessful"});
               console.log(`login succuessful`);
               res.redirect('/teacher');
             } else {
@@ -137,8 +137,8 @@ authRoute.get('/logout', (req, res) => {
 })
 
 authRoute.post('/addGrade/:id', (req, res) => {
-  // let assignmentName = req.body.assignmentName;
-  // let studentName = req.body.studentName;
+  let assignmentName = req.body.assignmentName;
+  let studentName = req.body.studentName;
 
   const grade = new Grade({
     assignmentName: req.body.assignmentName,
