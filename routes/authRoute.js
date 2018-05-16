@@ -5,7 +5,7 @@ const {matchedData, sanitize} = require('express-validator/filter');
 const bcrypt = require(`bcryptjs`);
 //local
 const Teacher = require(`../models/teacher.js`);
-
+const {validdateUser} = require(`../middleware/middleware.js`)
 const Grade = require(`../models/grade.js`);
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
