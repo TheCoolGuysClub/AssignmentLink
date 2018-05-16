@@ -8,7 +8,11 @@ const Teacher = require(`../models/teacher.js`);
 
 const Grade = require(`../models/grade.js`);
 authRoute.get(`/public`,(req,res)=>{
-  res.render('public');
+  Grade.find()
+    .then((grades) => {
+      res.send(grades);
+      res.render(`./public`,{grades});
+  })
 })
 
 authRoute.get(`/index`,(req,res)=>{
@@ -63,8 +67,8 @@ authRoute.post('/score',[
   body(`studentName`).isLength({min: 1})
     .withMessage(`studentName must be at least 1 characters`)
   ,
-  body('assignmentName').isLength({min:6})
-  .withMessage(`assignmentName must be at least 6 characters long`)
+  body('assignmentName').isLength({min:1})
+  .withMessage(`assignmentName must be at least 1 character long`)
 ],(req,res)=>{
   const errors = validationResult(req);
   if(!errors.isEmpty()){
