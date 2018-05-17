@@ -6,7 +6,14 @@
   </head>
   <body>
     <p>this is public view</p>
+    <!-- {{#each errorMessages}}
 
+    <p style= "color:red">{{message}}</p>
+
+    {{/each}}
+    {{#each successMessage}}
+    <p style= "color:lightgreen">{{message}}</p>
+    {{/each}} -->
     {{#each grades}}
 
     <section class="assignment">
@@ -16,6 +23,9 @@
       <p id="assignmentWorth">Assignment Worth:{{assignmentWorth}}</p>
       <br>
     </section>
+    <!-- <form id="delete" action="/score/{{score.id}}?_method=DELETE" method="post">
+    <input type="submit" value="Delete this Score">
+    </form> -->
 
 
     {{/each}}

@@ -10,7 +10,7 @@ const Grade = require(`../models/grade.js`);
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
     .then((grades) => {
-      console.log(grades);
+      
       res.render(`./public`, {grades});
   })
 })
@@ -139,6 +139,7 @@ authRoute.get('/logout', (req, res) => {
 })
 
 authRoute.post('/addGrade/:id', (req, res) => {
+  console.log("hit addgrade");
   let assignmentName = req.body.assignmentName;
   let studentName = req.body.studentName;
 
@@ -148,12 +149,24 @@ authRoute.post('/addGrade/:id', (req, res) => {
   })
   grade.save()
     .then(grade => {
+      // console.log("hello");
       res.redirect('/teacher')
     })
     .catch(e => {
       res.status(400).send();
     })
 })
-
+authRoute.delete(`/score/:id`,(req,res)=>{
+  // console.log("hello");
+  const id = req.params.id;
+  console.log(id);
+  Dog.findByIdAndRemove(id)
+    .then(Grades => {
+      // console.log("hi");
+      res.redirect(`/public`)
+    }).catch (e => {
+      res.status(404).send(e);
+    })
+  })
 
 module.exports = authRoute;
