@@ -7,10 +7,20 @@ const bcrypt = require(`bcryptjs`);
 const Teacher = require(`../models/teacher.js`);
 const {validdateUser} = require(`../middleware/middleware.js`)
 const Grade = require(`../models/grade.js`);
+
+
+const logger = (req,res,next)=>{
+  console.log("This is our custom middleware");
+  console.log(`email before change:`, req.body.email);
+  req.body.school=`Paly`;
+  console.log("body:",req.body);
+  next();
+}
+
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
     .then((grades) => {
-      
+
       res.render(`./public`, {grades});
   })
 })
@@ -26,7 +36,7 @@ authRoute.get(`/login`,(req,res)=>{
   res.render(`login`);
 })
 
-authRoute.get(`/teacher`,(req,res)=>{
+authRoute.get(`/teacher`,validdateUser,(req,res)=>{
   res.render(`teacher`);
 })
 authRoute.get(`/login`,(req,res)=>{
