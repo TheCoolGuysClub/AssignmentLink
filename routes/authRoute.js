@@ -9,13 +9,7 @@ const {validdateUser} = require(`../middleware/middleware.js`)
 const Grade = require(`../models/grade.js`);
 
 
-const logger = (req,res,next)=>{
-  console.log("This is our custom middleware");
-  console.log(`email before change:`, req.body.email);
-  req.body.school=`Paly`;
-  console.log("body:",req.body);
-  next();
-}
+
 
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
@@ -54,7 +48,7 @@ authRoute.post(`/register`,[
     const errorMessages = errors.array().map(obj=>{
     return{message:obj.msg};
     })
-    console.log(`errors`, errorMessages);
+    // console.log(`errors`, errorMessages);
     req.flash(`errorMessages`,errorMessages)
     return res.redirect(`/register`);
   }
@@ -88,12 +82,12 @@ authRoute.post('/score',[
     const errorMessages = errors.array().map(obj=>{
     return{message:obj.msg};
     })
-    console.log(`errors`, errorMessages);
+    // console.log(`errors`, errorMessages);
     req.flash(`errorMessages`,errorMessages)
     return res.redirect(`/teacher`);
   }
   const gradeData = matchedData(req);
-  console.log(gradeData);
+  // console.log(gradeData);
   const grade = new Grade(gradeData);
   grade.save()
     .then(grade=>{
@@ -114,20 +108,20 @@ authRoute.post('/login', (req, res) => {
     .then(teacher => {
       if(!teacher) {
         req.flash('errorMessages', {message: 'This username does not exist.'});
-        console.log(req.body.username);
+        // console.log(req.body.username);
         res.redirect('/login');
       } else {
         bcrypt.compare(req.body.password, teacher.password)
           .then(passwordIsValid => {
             if (passwordIsValid) {
               req.session.userId = teacher._id;
-              console.log('userID in session:', teacher._id);
+              // console.log('userID in session:', teacher._id);
               req.flash('sucessMessage', {message: "login succuessful"});
-              console.log(`login succuessful`);
+              // console.log(`login succuessful`);
               res.redirect('/teacher');
             } else {
               req.flash('errorMessages', {message: 'Invalid password'});
-              console.log(`invalid password`);
+              // console.log(`invalid password`);
               res.redirect('/login');
             }
 
@@ -149,7 +143,7 @@ authRoute.get('/logout', (req, res) => {
 })
 
 authRoute.post('/addGrade/:id', (req, res) => {
-  console.log("hit addgrade");
+  // console.log("hit addgrade");
   let assignmentName = req.body.assignmentName;
   let studentName = req.body.studentName;
 
@@ -167,12 +161,12 @@ authRoute.post('/addGrade/:id', (req, res) => {
     })
 })
 authRoute.delete(`/score/:id`,(req,res)=>{
-  // console.log("hello");
+
   const id = req.params.id;
-  console.log(id);
+
   Dog.findByIdAndRemove(id)
     .then(Grades => {
-      // console.log("hi");
+
       res.redirect(`/public`)
     }).catch (e => {
       res.status(404).send(e);
