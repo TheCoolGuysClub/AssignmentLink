@@ -69,7 +69,9 @@ authRoute.post('/score',[
   body('assignmentName').isLength({min:1})
   .withMessage(`assignmentName must be at least 1 character long`),
   body('score').isLength({min:1})
-  .withMessage(`score must be at least 1 digit`)
+  .withMessage(`score must be at least 1 digit`),
+  body(`assignmentWorth`).isLength({min:1})
+  .withMessage(`assignment must worth 1 point`)
 ],(req,res)=>{
   const errors = validationResult(req);
   if(!errors.isEmpty()){

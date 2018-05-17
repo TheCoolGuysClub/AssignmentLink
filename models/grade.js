@@ -19,6 +19,7 @@ const gradeSchema = mongoose.Schema({
   },
   assignmentWorth: {
     type: Number,
+    default:100,
     required: false
   }
 })
