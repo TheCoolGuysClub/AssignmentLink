@@ -45,7 +45,7 @@ app.use(`/`,authRoute);
 
 
 app.get(`/`,(req,res)=>{
-  res.render(`index`);
+  res.render(`public`);
 })
 
 app.listen(port,()=>{
