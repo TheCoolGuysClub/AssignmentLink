@@ -160,11 +160,11 @@ authRoute.post('/addGrade/:id', (req, res) => {
       res.status(400).send();
     })
 })
-authRoute.delete(`/score/:id`,(req,res)=>{
-
+authRoute.delete(`/grades/:id`,(req,res)=>{
+  console.log("hit the delete route");
   const id = req.params.id;
-
-  Dog.findByIdAndRemove(id)
+  console.log(id);
+  Grade.findByIdAndRemove(id)
     .then(Grades => {
 
       res.redirect(`/public`)
