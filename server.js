@@ -31,6 +31,7 @@ app.set(`view engine`,`hbs`);
     cookie:{secure:false}
   }));
 
+  app.use(express.static(path.join(__dirname,`public`)));
   app.use(flash());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:true}));
