@@ -13,24 +13,23 @@
       <br>
       <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Chain_link_icon.png" alt="" class="logo">
       </a>
+      <h1 style="text-align: center; font-size: 50px;">Assignments</h1>
     </header>
-    {{#each grades}}
-
-    <section class="assignment">
-      <p id="assignmentName">Assignment name: {{assignmentName}}</p>
-      <p id="studentName">Student name: {{studentName}}</p>
-      <p id="score">Score: {{score}}</p>
-      <p id="assignmentWorth">Assignment Worth:{{assignmentWorth}}</p>
-      <br>
-      <form action="/teacher/{{grade.id}}?_method=DELETE" method="post" >
-      <button type="submit" name="button" class="del-but">Delete this assignment</button>
-      </form>
+    <section id="assignment-container">
+      {{#each grades}}
+      <section class="assignment">
+        <p class="field">Assignment name: {{assignmentName}}</p>
+        <p class="field">Student name: {{studentName}}</p>
+        <p class="field">Score: {{score}}</p>
+        <p class="field">Assignment Worth: {{assignmentWorth}}</p>
+        <br>
+        <form action="/teacher/{{grade.id}}?_method=DELETE" method="post" >
+        <button type="submit" name="button" class="del-but">Delete this assignment</button>
+        </form>
+      </section>
+      {{/each}}
     </section>
 
-
-
-
-    {{/each}}
 
       <!-- <a href="logout">logout</a> -->
       <!-- <a href="register">Register</a>

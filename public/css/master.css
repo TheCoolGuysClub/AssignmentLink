@@ -96,13 +96,6 @@ input {
   float: left;
 }
 
-/* successMessage {
-  color: green;
-}
-
-errorMessages {
-  color: red;
-} */
 
 #publichead {
   background-color: white;
@@ -111,20 +104,35 @@ errorMessages {
 }
 
 .assignment {
-  margin-left: 20px;
-  border: solid #0080ff;
-  width: 20%;
+  border: solid #0080ff 1px;
+  width: 90%;
   padding: 10px;
   margin: 10px;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+#assignment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: middle;
+  align-content: center;
+  width: 100%;
 }
 
 .del-but {
-  margin-left: 20px;
-  border-radius: 0px;
-  border: outset #0080ff 1px;
+  border: outset red 1px;
   background-color: white;
+  height: 40px;
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 .add-another {
   margin-left: 20px;
+}
+
+.field {
+  font-size: 20px;
 }
