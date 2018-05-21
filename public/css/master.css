@@ -131,6 +131,12 @@ input {
 
 .add-another {
   margin-left: 20px;
+  border: solid 1px black;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  background: #e2e2e2;
+  text-decoration: none;
 }
 
 .field {
