@@ -21,8 +21,10 @@
       <p id="studentName">Student name: {{studentName}}</p>
       <p id="score">Score: {{score}}</p>
       <p id="assignmentWorth">Assignment Worth:{{assignmentWorth}}</p>
+
       <br>
-      <form action="/teacher/{{grade.id}}?_method=DELETE" method="post" >
+      <form action="/score/{{_id}}?_method=DELETE" method="post" >
+
       <button type="submit" name="button" class="del-but">Delete this assignment</button>
       </form>
     </section>

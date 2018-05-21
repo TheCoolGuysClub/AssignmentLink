@@ -164,7 +164,7 @@ authRoute.get('/logout', (req, res) => {
 //       res.status(400).send();
 //     })
 // })
-authRoute.delete(`/score/:id`,(req,res)=>{
+authRoute.post(`/score/:id`,(req,res)=>{
   console.log("hit the delete route");
   const id = req.params.id;
   console.log(id);
