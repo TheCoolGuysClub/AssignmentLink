@@ -164,13 +164,12 @@ authRoute.get('/logout', (req, res) => {
 //       res.status(400).send();
 //     })
 // })
-authRoute.delete(`/grades/:id`,(req,res)=>{
+authRoute.delete(`/score/:id`,(req,res)=>{
   console.log("hit the delete route");
   const id = req.params.id;
   console.log(id);
   Grade.findByIdAndRemove(id)
     .then(Grades => {
-
       res.redirect(`/public`)
     }).catch (e => {
       res.status(404).send(e);
