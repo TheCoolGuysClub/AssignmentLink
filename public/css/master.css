@@ -103,3 +103,28 @@ input {
 errorMessages {
   color: red;
 } */
+
+#publichead {
+  background-color: white;
+  margin: 10px;
+  border-bottom: solid;
+}
+
+.assignment {
+  margin-left: 20px;
+  border: solid #0080ff;
+  width: 20%;
+  padding: 10px;
+  margin: 10px;
+}
+
+.del-but {
+  margin-left: 20px;
+  border-radius: 0px;
+  border: outset #0080ff 1px;
+  background-color: white;
+}
+
+.add-another {
+  margin-left: 20px;
+}
