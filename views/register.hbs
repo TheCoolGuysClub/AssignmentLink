@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" id="registerpage">
   <head>
     <meta charset="utf-8">
     <title>register</title>
@@ -8,19 +8,22 @@
   </head>
   <body>
 
-    <h1>Register!</h1>
-    Already have an account? <a href="login">login</a>!
-    <form action="/register" method="post">
+    <section class="mid-box">
+      <h1 class="title">Register!</h1>
+      <p>Already have an account? <a href="login">Click here to login</a></p>
+      <form action="/register" method="post">
 
-      <p>
-      username:<input type="text" name="username" placeholder="Type your UserName">
-      password:<input type="password" name="password" placeholder="Type your Password">
+        <p>
+        Username: <input type="text" name="username" placeholder="Type your UserName">
+        <br>
+        Password:  <input type="password" name="password" placeholder="Type your Password">
 
-      </p>
-      <p>
-        <input type="submit">
-      </p>
-    </form>
+        </p>
+        <p>
+          <input type="submit">
+        </p>
+      </form>
+    </section>
   </body>
   <link rel="stylesheet" href="/css/master.css">
 </html>
