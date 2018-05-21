@@ -5,11 +5,15 @@ const {matchedData, sanitize} = require('express-validator/filter');
 const bcrypt = require(`bcryptjs`);
 //local
 const Teacher = require(`../models/teacher.js`);
-const {validdateUser} = require(`../middleware/middleware.js`)
+const {validateUser} = require(`../middleware/middleware.js`)
 const Grade = require(`../models/grade.js`);
 
 
 
+
+authRoute.get(`/`,(req,res)=>{
+  res.redirect('/index');
+})
 
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
@@ -30,7 +34,7 @@ authRoute.get(`/login`,(req,res)=>{
   res.render(`login`);
 })
 
-authRoute.get(`/teacher`,validdateUser,(req,res)=>{
+authRoute.get(`/teacher`,validateUser,(req,res)=>{
   res.render(`teacher`);
 })
 authRoute.get(`/login`,(req,res)=>{

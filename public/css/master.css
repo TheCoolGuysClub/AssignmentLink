@@ -1,7 +1,27 @@
-p {
-  color: red;
+html {
+  font-family: helvetica;
 }
 
-h1 {
-  color: blue;
+.titleimg {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#welcometitle {
+  text-align: center;
+  font-size: 80px;
+}
+#indexpage {
+  background: lightgreen;
+}
+
+.home-option {
+  font-size: 50px;
+  color: black;
+  text-decoration: none;
+  background-color: yellow;
+  width: 40px;
 }

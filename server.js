@@ -45,10 +45,6 @@ app.set(`view engine`,`hbs`);
 app.use(`/`,authRoute);
 
 
-app.get(`/`,(req,res)=>{
-  res.render(`public`);
-})
-
 app.listen(port,()=>{
   console.log(`Web Server up on port ${port}!`);
 })
