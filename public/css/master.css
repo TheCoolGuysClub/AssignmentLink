@@ -91,3 +91,15 @@ input {
 .bluetext {
   color: #1a8cff;
 }
+
+#gradesubmit {
+  float: left;
+}
+
+/* successMessage {
+  color: green;
+}
+
+errorMessages {
+  color: red;
+} */
