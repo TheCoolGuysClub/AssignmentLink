@@ -12,7 +12,7 @@ html {
 
 .title {
   text-align: center;
-  font-size: 80px;
+  font-size: 40px;
 }
 #indexpage {
   /* background: lightgreen; */
@@ -40,6 +40,12 @@ input {
   width: 100px;
 }
 
+.logo-small {
+  width: 40px;
+  padding: -20px;
+  margin: -20px;
+}
+
 header {
   background-color: white;
   margin: -10px;
@@ -50,10 +56,38 @@ img {
   margin: 0px;
 }
 
+.small-text {
+  font-size: 12px;
+}
+
+input[type=submit] {
+  background-color: #0080ff;
+  color: white;
+  width: 80px;
+  float: right;
+  margin-right: 30px;
+}
 .mid-box {
-  margin: 100px;
   border: solid;
   border-width: 2px;
   border-color: lightgray;
   padding: 50px;
+  border-radius: 10px;
+  height: 380px;
+  width: 380px;
+  margin: auto;
+  margin-top: 200px;
+
+}
+
+input {
+  border: none;
+  border-bottom: solid;
+  border-color: #0080ff;
+  width: 250px;
+  border-width: 2px;
+}
+
+.bluetext {
+  color: #1a8cff;
 }
