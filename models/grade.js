@@ -15,12 +15,13 @@ const gradeSchema = mongoose.Schema({
   },
   score: {
     type: Number,
-    default: 100
+    default: 100,
+    required: true
   },
   assignmentWorth: {
     type: Number,
     default:100,
-    required: false
+    required: true
   }
 })
 

@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
-
 //locals variables
 const teacher = require(`./models/teacher.js`);
 const grade = require(`./models/grade.js`);

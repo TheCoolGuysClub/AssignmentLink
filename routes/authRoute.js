@@ -18,7 +18,6 @@ authRoute.get(`/`,(req,res)=>{
 authRoute.get(`/public`,(req,res)=>{
   Grade.find()
     .then((grades) => {
-
       res.render(`./public`, {grades});
   })
 })
