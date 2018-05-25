@@ -1,5 +1,5 @@
 html {
-  font-family: helvetica;
+  font-family: 'Raleway';
 }
 
 .titleimg {
@@ -18,12 +18,23 @@ html {
   /* background: lightgreen; */
 }
 
+li {
+  color: #0080ff;
+
+}
+
 .home-option {
-  font-size: 50px;
-  color: black;
-  text-decoration: none;
-  background-color: yellow;
+  font-size: 30px;
+  color: #0080ff;
   width: 40px;
+  text-decoration: none;
+}
+
+.home-option-view {
+  font-size: 30px;
+  color: #0080ff;
+  width: 240px;
+  text-decoration: none;
 }
 
 #registerpage {
@@ -56,6 +67,10 @@ img {
   margin: 0px;
 }
 
+.big-title {
+  font-size: 50px;
+}
+
 .small-text {
   font-size: 12px;
 }
@@ -77,6 +92,20 @@ input[type=submit] {
   width: 380px;
   margin: auto;
   margin-top: 200px;
+
+}
+
+
+.mid-box-index {
+  border: solid;
+  border-width: 2px;
+  border-color: lightgray;
+  padding: 50px;
+  border-radius: 10px;
+  height: 650px;
+  width: 700px;
+  margin: auto;
+  margin-top: 50px;
 
 }
 

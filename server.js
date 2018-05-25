@@ -23,11 +23,10 @@ app.set(`view engine`,`hbs`);
 
   //Middleware
   app.use(session({
-    //this is the string you made up
     secret:process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized: true,
-    cookie:{secure:false}
+    cookie:{secure:true}
   }));
 
   app.use(express.static(path.join(__dirname,`public`)));

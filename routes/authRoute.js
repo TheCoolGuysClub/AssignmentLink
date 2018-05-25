@@ -145,24 +145,6 @@ authRoute.get('/logout', (req, res) => {
   res.redirect('/login');
 })
 
-// authRoute.post('/addGrade/:id', (req, res) => {
-//   // console.log("hit addgrade");
-//   let assignmentName = req.body.assignmentName;
-//   let studentName = req.body.studentName;
-//
-//   const grade = new Grade({
-//     assignmentName: req.body.assignmentName,
-//     studentName: req.body.studentName
-//   })
-//   grade.save()
-//     .then(grade => {
-//       // console.log("hello");
-//       res.redirect('/teacher')
-//     })
-//     .catch(e => {
-//       res.status(400).send();
-//     })
-// })
 authRoute.post(`/score/:id`,(req,res)=>{
   console.log("hit the delete route");
   const id = req.params.id;
